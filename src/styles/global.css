@@ -1,0 +1,281 @@
+/* ====================================
+   ESPACIO LUDIMENTE - Estilos Globales
+   Basado en el Manual de Identidad de Marca
+   ==================================== */
+
+/* Importar Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@300;400;600&display=swap');
+
+/* ====================================
+   VARIABLES CSS - Sistema de Colores
+   ==================================== */
+
+:root {
+  /* Colores Primarios (del Manual de Identidad) */
+  --color-primary: #B19CD9;           /* Lila Primary */
+  --color-secondary: #D69264;         /* Terracota Secondary */
+  --color-accent: #F4D03F;            /* Copal Accent */
+  --color-text: #4A3B45;              /* Piedra Text */
+  --color-surface: #FFF0F5;           /* Crema Surface */
+
+  /* Colores de Fondo y Containers */
+  --color-background: #FFFFFF;
+  --color-primary-container: #F3E5F5; /* Lila suave */
+  --color-secondary-container: #FFF8E1; /* Crema cálido */
+
+  /* Outline y Bordes */
+  --color-outline: rgba(177, 156, 217, 0.3); /* Lila al 30% */
+
+  /* Tipografía */
+  --font-display: 'Lora', serif;      /* Títulos */
+  --font-body: 'Montserrat', sans-serif; /* Cuerpo */
+
+  /* Tamaños de Texto (Material Design 3) */
+  --text-display-large: 3.56rem;      /* 57px - H1 */
+  --text-headline-large: 2.25rem;     /* 36px - H2 */
+  --text-headline-medium: 1.75rem;    /* 28px - H3 */
+  --text-body-large: 1.25rem;         /* 20px - Destacado */
+  --text-body: 1rem;                  /* 16px - Normal */
+  --text-body-small: 0.875rem;        /* 14px - Secundario */
+  --text-label: 0.75rem;              /* 12px - Legal */
+
+  /* Espaciado */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 96px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Sombras */
+  --shadow-sm: 0 2px 4px rgba(74, 59, 69, 0.1);
+  --shadow-md: 0 4px 8px rgba(74, 59, 69, 0.15);
+  --shadow-lg: 0 8px 16px rgba(74, 59, 69, 0.2);
+
+  /* Transiciones */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
+/* ====================================
+   RESET Y BASE
+   ==================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  overflow-x: hidden;
+}
+
+/* ====================================
+   TIPOGRAFÍA
+   ==================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+
+h1 {
+  font-size: var(--text-display-large);
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: var(--text-headline-large);
+  letter-spacing: -0.5px;
+}
+
+h3 {
+  font-size: var(--text-headline-medium);
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+}
+
+/* Énfasis en itálica (para palabras clave en títulos) */
+h1 em, h2 em, h3 em {
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+/* ====================================
+   ENLACES
+   ==================================== */
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ====================================
+   BOTONES (estilos base)
+   ==================================== */
+
+button, .button {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-body);
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: inline-block;
+  text-align: center;
+}
+
+button:focus-visible, .button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* Botón Primary */
+.button-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.button-primary:hover {
+  background-color: #9B7FC9;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Botón Secondary */
+.button-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-surface);
+}
+
+.button-secondary:hover {
+  background-color: #C67F54;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ====================================
+   UTILIDADES
+   ==================================== */
+
+/* Container principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Espaciado entre secciones */
+.section {
+  padding: var(--spacing-xl) 0;
+}
+
+/* Texto centrado */
+.text-center {
+  text-align: center;
+}
+
+/* Ocultar solo visualmente (accesibilidad) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ====================================
+   RESPONSIVE
+   ==================================== */
+
+/* Tablets y abajo */
+@media (max-width: 768px) {
+  :root {
+    --text-display-large: 2.5rem;     /* 40px */
+    --text-headline-large: 1.75rem;   /* 28px */
+    --text-headline-medium: 1.5rem;   /* 24px */
+  }
+
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .section {
+    padding: var(--spacing-lg) 0;
+  }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+  :root {
+    --text-display-large: 2rem;       /* 32px */
+    --text-headline-large: 1.5rem;    /* 24px */
+    --text-headline-medium: 1.25rem;  /* 20px */
+  }
+}
+
+/* ====================================
+   ACCESIBILIDAD
+   ==================================== */
+
+/* Respetar preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Modo de alto contraste (soporte futuro) */
+@media (prefers-contrast: high) {
+  :root {
+    --color-outline: rgba(177, 156, 217, 0.6);
+  }
+}

@@ -1,0 +1,73 @@
+---
+// Este es el "frontmatter" de Astro
+// Aquí puedes escribir JavaScript/TypeScript
+// Todo esto se ejecuta en el servidor, no en el navegador
+
+const title = "Espacio Ludimente";
+const description = "Centro de Psicología Infantil y Adolescente en Mérida, Yucatán";
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} - Donde la mente aprende y florece con calidez</title>
+  <meta name="description" content={description}>
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="/src/styles/global.css">
+
+  <!-- Favicon (temporal - agregaremos uno real después) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+  <!-- Página temporal de bienvenida -->
+  <main class="container">
+    <section class="section text-center" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+      <h1>
+        Bienvenido a <em>Espacio Ludimente</em> 🌿
+      </h1>
+
+      <p style="font-size: var(--text-body-large); max-width: 600px; margin: var(--spacing-md) auto;">
+        Donde la mente aprende y florece con calidez
+      </p>
+
+      <div style="margin-top: var(--spacing-lg);">
+        <p style="color: var(--color-primary); font-weight: 600;">
+          ✅ Astro está funcionando correctamente
+        </p>
+        <p style="margin-top: var(--spacing-sm); color: var(--color-secondary);">
+          Psicología Infantil y Adolescente con enfoque TCC en Mérida, Yucatán
+        </p>
+      </div>
+
+      <div style="margin-top: var(--spacing-lg); display: flex; gap: var(--spacing-sm); flex-wrap: wrap; justify-content: center;">
+        <button class="button button-primary">
+          Reservar Primera Sesión
+        </button>
+        <button class="button button-secondary">
+          Conocer Servicios
+        </button>
+      </div>
+
+      <div style="margin-top: var(--spacing-xl); padding: var(--spacing-md); background-color: var(--color-primary-container); border-radius: var(--radius-md); max-width: 700px;">
+        <h3>🎉 Próximos pasos:</h3>
+        <ul style="text-align: left; margin-top: var(--spacing-sm); list-style-position: inside;">
+          <li>Crear componentes Header y Footer</li>
+          <li>Diseñar la sección Hero</li>
+          <li>Agregar sección de servicios</li>
+          <li>Crear páginas internas</li>
+        </ul>
+      </div>
+
+    </section>
+  </main>
+
+  <style>
+    /* Estilos específicos de esta página */
+    /* (Puedes escribir CSS aquí que solo aplica a este componente) */
+  </style>
+</body>
+</html>
