@@ -1,0 +1,89 @@
+---
+/**
+ * MainLayout.astro
+ * Layout principal del sitio - Usado en todas las páginas
+ * Incluye: meta tags, estilos globales, Header y Footer
+ */
+
+// Importar componentes
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Props que cada página puede personalizar
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+// Valores por defecto
+const {
+  title = "Espacio Ludimente - Psicología Infantil y Adolescente en Mérida",
+  description = "Centro de psicología infantil con enfoque TCC en Mérida, Yucatán. Terapia basada en evidencia para niños y adolescentes. Primera sesión disponible.",
+  ogImage = "/og-image.jpg"
+} = Astro.props;
+
+// URL del sitio (para meta tags)
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Charset y viewport -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Básico -->
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonicalURL}>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImage}>
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content={canonicalURL}>
+  <meta property="twitter:title" content={title}>
+  <meta property="twitter:description" content={description}>
+  <meta property="twitter:image" content={ogImage}>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="/src/styles/global.css">
+
+  <!-- Google Fonts - Ya están en global.css, pero por si acaso -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Generator tag (opcional) -->
+  <meta name="generator" content={Astro.generator}>
+</head>
+
+<body>
+  <!-- Navegación principal -->
+  <Header />
+
+  <!-- Contenido principal de cada página -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- Pie de página -->
+  <Footer />
+</body>
+</html>
+
+<style>
+  /* Estilos específicos del layout si necesitamos */
+  main {
+    min-height: calc(100vh - 200px); /* Ajustar cuando tengamos Header y Footer */
+  }
+</style>
