@@ -1,0 +1,175 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const team = [
+  {
+    name: "Psic. Angélica del Carmen Chin Cantillo",
+    role: "Psicóloga Infantil & Fundadora",
+    bio: "Especialista en ansiedad infantil y TDAH. Creo firmemente que cada niño tiene un superpoder esperando ser descubierto.",
+    image: "/images/angelica-placeholder.jpg" // Placeholder
+  },
+  {
+    name: "Psic. María Teresa Castillo Vega",
+    role: "Psicóloga Educativa",
+    bio: "Apasionada por el aprendizaje y la inteligencia emocional. Mi meta es que la escuela sea un lugar feliz para todos.",
+    image: "/images/teresa-placeholder.jpg" // Placeholder
+  }
+];
+---
+
+<MainLayout title="Sobre Nosotras - Espacio Ludimente" description="Conoce a Angélica y María Teresa, psicólogas especialistas en TCC infantil en Mérida.">
+  <section class="hero-about">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Psicólogas con corazón de <em>maestras</em></h1>
+        <p class="lead">Creamos Espacio Ludimente porque creemos que la terapia debe ser un lugar seguro, divertido y transformador.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="history-section container">
+    <div class="content-narrow">
+      <h2>Nuestra Historia</h2>
+      <p>Espacio Ludimente nació de una pregunta: <strong>¿Por qué la terapia infantil tiene que sentirse fría o aburrida?</strong></p>
+      <p>Somos Angélica y María Teresa, psicólogas escolares con especialidad en Terapia Cognitivo Conductual. Después de años trabajando en escuelas y consultorio, decidimos crear un espacio donde las familias encuentren lo que nosotras hubiéramos querido para nuestros propios hijos: profesionalismo basado en evidencia, pero con una calidez humana que abraza.</p>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container">
+      <h2 class="text-center">Nuestro Equipo</h2>
+      <div class="team-grid">
+        {team.map(member => (
+          <article class="team-card">
+            <div class="image-wrapper">
+              <div class="placeholder-avatar">{member.name[0]}</div>
+              <!-- <img src={member.image} alt={member.name} /> -->
+            </div>
+            <div class="card-content">
+              <h3>{member.name}</h3>
+              <p class="role">{member.role}</p>
+              <p class="bio">"{member.bio}"</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="values-section container">
+    <h2 class="text-center">¿Por qué TCC?</h2>
+    <div class="values-grid">
+      <div class="value-item">
+        <span class="icon">🧠</span>
+        <h3>Evidencia Científica</h3>
+        <p>No improvisamos. Usamos técnicas probadas que funcionan.</p>
+      </div>
+      <div class="value-item">
+        <span class="icon">🎯</span>
+        <h3>Objetivos Claros</h3>
+        <p>Sabrás exactamente qué estamos trabajando semana a semana.</p>
+      </div>
+      <div class="value-item">
+        <span class="icon">🤝</span>
+        <h3>Trabajo en Equipo</h3>
+        <p>Tú eres el experto en tu hijo; nosotras te damos las herramientas.</p>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .hero-about {
+    background-color: var(--color-secondary-container);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .history-section {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .content-narrow {
+    max-width: 65ch;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .team-section {
+    background-color: var(--color-surface);
+    padding: var(--spacing-xl) 0;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+  }
+
+  .team-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    padding: var(--spacing-lg);
+  }
+
+  .image-wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto var(--spacing-md);
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--color-primary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .placeholder-avatar {
+    font-size: 3rem;
+    color: var(--color-primary);
+    font-weight: bold;
+  }
+
+  .role {
+    color: var(--color-secondary);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .bio {
+    font-style: italic;
+    color: #666;
+  }
+
+  .values-section {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+  }
+
+  .value-item {
+    text-align: center;
+    padding: var(--spacing-md);
+  }
+
+  .value-item .icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+  }
+</style>
