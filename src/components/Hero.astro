@@ -1,9 +1,11 @@
 ---
 /**
  * Hero.astro
- * Sección Hero principal con estilo Japandi
- * Concepto: "Refugio y Estructura" - Portal hacia un espacio seguro
+ * Sección Hero principal con estilo Japandi refinado
+ * Concepto: "Refugio y Estructura" - Portal de ventana hacia un espacio seguro
  */
+
+import Button from './Button.astro';
 ---
 
 <section class="hero">
@@ -13,37 +15,34 @@
       <!-- Columna de Contenido -->
       <div class="hero-content">
 
-        <!-- Etiqueta de ubicación -->
-        <span class="location-tag">
-          📍 Psicología Infantil en Mérida, Yucatán
-        </span>
-
-        <!-- Título Principal -->
+        <!-- Título Principal (sin pill superior) -->
         <h1 class="hero-title">
           Donde la mente florece con <span class="highlight">calidez</span>.
         </h1>
 
-        <!-- Bajada -->
+        <!-- Descripción actualizada -->
         <p class="hero-description">
-          Integramos la suavidad del desarrollo emocional con la firmeza de la experiencia clínica.
+          Integramos la calidez humana con la estructura del enfoque cognitivo conductual.
+          Expertas en diagnóstico psicopedagógico e intervención para atender dificultades
+          de aprendizaje, conducta y gestión emocional.
         </p>
 
         <!-- CTAs -->
         <div class="hero-ctas">
-          <a href="/reservar" class="btn btn-primary">
+          <Button href="/reservar" variant="primary" size="large">
             Reservar Sesión
-          </a>
-          <a href="/servicios" class="btn btn-secondary">
+          </Button>
+          <Button href="/servicios" variant="outline" size="large">
             Conocer Servicios
-          </a>
+          </Button>
         </div>
 
       </div>
 
-      <!-- Columna de Imagen con Arco -->
+      <!-- Columna de Imagen con Marco de Ventana -->
       <div class="hero-visual">
 
-        <!-- Marco tipo portal/arco -->
+        <!-- Marco tipo ventana con arco superior -->
         <div class="arch-frame">
           <div class="image-container">
             <!-- Placeholder de imagen -->
@@ -53,7 +52,7 @@
             </div>
           </div>
 
-          <!-- Elementos decorativos -->
+          <!-- Elementos decorativos (estables) -->
           <div class="deco-circle deco-circle-1" aria-hidden="true"></div>
           <div class="deco-circle deco-circle-2" aria-hidden="true"></div>
           <div class="deco-line" aria-hidden="true"></div>
@@ -64,7 +63,7 @@
     </div>
   </div>
 
-  <!-- Blobs decorativos de fondo -->
+  <!-- Blobs decorativos de fondo (estables) -->
   <div class="bg-blob blob-1" aria-hidden="true"></div>
   <div class="bg-blob blob-2" aria-hidden="true"></div>
 </section>
@@ -106,21 +105,6 @@
     animation: fadeInUp 1s ease-out;
   }
 
-  /* Etiqueta de ubicación */
-  .location-tag {
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--color-secondary);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: var(--color-secondary-container);
-    border-radius: var(--radius-full);
-    width: fit-content;
-  }
-
   /* Título Principal */
   .hero-title {
     font-family: var(--font-display);
@@ -132,7 +116,7 @@
   }
 
   .hero-title .highlight {
-    color: var(--color-primary);
+    color: var(--color-secondary); /* Terracota, NO Primary */
     font-style: italic;
     position: relative;
     display: inline-block;
@@ -157,15 +141,15 @@
     opacity: 0.5;
   }
 
-  /* Bajada */
+  /* Descripción (texto más largo) */
   .hero-description {
     font-family: var(--font-body);
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(1rem, 2vw, 1.125rem);
     line-height: 1.7;
     color: var(--color-text);
     opacity: 0.85;
     margin: 0;
-    max-width: 500px;
+    max-width: 550px;
   }
 
   /* Botones */
@@ -176,49 +160,9 @@
     flex-wrap: wrap;
   }
 
-  .btn {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 14px 32px;
-    border-radius: var(--radius-full);
-    text-decoration: none;
-    transition: all var(--transition-base);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: 2px solid transparent;
-  }
-
-  .btn-primary {
-    background-color: var(--color-primary);
-    color: var(--color-text);
-  }
-
-  .btn-primary:hover {
-    background-color: transparent;
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(177, 156, 217, 0.25);
-  }
-
-  .btn-secondary {
-    background-color: transparent;
-    border-color: var(--color-secondary);
-    color: var(--color-secondary);
-  }
-
-  .btn-secondary:hover {
-    background-color: var(--color-secondary);
-    color: var(--color-surface);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(214, 146, 100, 0.25);
-  }
-
 
   /* ================================
-     COLUMNA VISUAL - Marco tipo Arco
+     COLUMNA VISUAL - Marco de Ventana
      ================================ */
 
   .hero-visual {
@@ -230,7 +174,7 @@
     animation: fadeIn 1.2s ease-out 0.3s backwards;
   }
 
-  /* Marco con forma de arco/portal */
+  /* Marco con forma de VENTANA CON ARCO (no huevo) */
   .arch-frame {
     position: relative;
     width: 100%;
@@ -250,53 +194,41 @@
       var(--color-secondary-container)
     );
 
-    /* Forma de arco/portal usando clip-path */
-    clip-path: polygon(
-      0% 20%,
-      0% 80%,
-      10% 90%,
-      20% 95%,
-      40% 98%,
-      60% 98%,
-      80% 95%,
-      90% 90%,
-      100% 80%,
-      100% 20%,
-      90% 10%,
-      80% 5%,
-      60% 2%,
-      40% 2%,
-      20% 5%,
-      10% 10%
-    );
+    /* Forma de ARCO DE VENTANA: muy redondo arriba, casi recto abajo */
+    border-radius: 200px 200px 24px 24px;
 
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    /* Borde blanco grueso */
+    border: 12px solid white;
+
     box-shadow:
       0 20px 60px rgba(177, 156, 217, 0.15),
-      inset 0 0 60px rgba(255, 255, 255, 0.5);
+      inset 0 0 40px rgba(255, 255, 255, 0.4);
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Importante: la imagen interna respeta el border-radius */
   }
 
-  /* Efecto hover en el arco */
-  .arch-frame:hover .image-container {
-    transform: scale(1.02) translateY(-8px);
-    box-shadow:
-      0 30px 80px rgba(177, 156, 217, 0.25),
-      inset 0 0 80px rgba(255, 255, 255, 0.6);
+  /* Hover: SOLO ZOOM INTERNO de la imagen, NO mover el marco */
+  .arch-frame:hover .placeholder-image {
+    transform: scale(1.05);
   }
 
   /* Placeholder de imagen */
   .placeholder-image {
     text-align: center;
     z-index: 2;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .placeholder-image .emoji {
@@ -316,10 +248,10 @@
 
 
   /* ================================
-     ELEMENTOS DECORATIVOS
+     ELEMENTOS DECORATIVOS (ESTABLES)
      ================================ */
 
-  /* Círculos flotantes */
+  /* Círculos flotantes - sin animación exagerada */
   .deco-circle {
     position: absolute;
     border-radius: 50%;
@@ -333,7 +265,6 @@
     height: 120px;
     top: 10%;
     right: -20px;
-    animation: pulse 4s ease-in-out infinite;
   }
 
   .deco-circle-2 {
@@ -341,7 +272,6 @@
     height: 80px;
     bottom: 15%;
     left: -10px;
-    animation: pulse 4s ease-in-out infinite 2s;
   }
 
   /* Línea decorativa vertical */
@@ -363,7 +293,7 @@
 
 
   /* ================================
-     BLOBS DE FONDO
+     BLOBS DE FONDO (ESTABLES)
      ================================ */
 
   .bg-blob {
@@ -384,7 +314,6 @@
     );
     top: -200px;
     right: -100px;
-    animation: breathe 8s ease-in-out infinite;
   }
 
   .blob-2 {
@@ -397,7 +326,6 @@
     );
     bottom: -150px;
     left: -100px;
-    animation: breathe 8s ease-in-out infinite 4s;
   }
 
 
@@ -431,28 +359,6 @@
     }
     50% {
       transform: translateY(-20px);
-    }
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 0.4;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.6;
-    }
-  }
-
-  @keyframes breathe {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 0.08;
-    }
-    50% {
-      transform: scale(1.15);
-      opacity: 0.12;
     }
   }
 
@@ -539,11 +445,5 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-  }
-
-  /* Focus states */
-  .btn:focus-visible {
-    outline: 3px solid var(--color-primary);
-    outline-offset: 4px;
   }
 </style>

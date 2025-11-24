@@ -9,6 +9,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
+import Button from '../components/Button.astro';
 ---
 
 <MainLayout
@@ -158,17 +159,16 @@ import TestimonialCard from '../components/TestimonialCard.astro';
         </p>
 
         <div class="cta-buttons">
-          <a href="/reservar" class="button button-primary">
+          <Button href="/reservar" variant="primary" size="large">
             Reservar primera sesión
-          </a>
-          <a
+          </Button>
+          <Button
             href="https://wa.me/529992590623?text=Hola,%20me%20gustaría%20agendar%20una%20sesión"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button button-secondary"
+            variant="secondary"
+            size="large"
           >
             Escribirnos por WhatsApp
-          </a>
+          </Button>
         </div>
       </div>
 
@@ -332,11 +332,7 @@ import TestimonialCard from '../components/TestimonialCard.astro';
   @media (max-width: 768px) {
     .cta-buttons {
       flex-direction: column;
-    }
-
-    .cta-buttons .button {
       width: 100%;
-      text-align: center;
     }
 
     .services-grid,

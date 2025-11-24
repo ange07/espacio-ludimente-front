@@ -5,6 +5,8 @@
  * Props: title, description, icon (emoji o SVG), link (opcional)
  */
 
+import Button from './Button.astro';
+
 interface Props {
   title: string;
   description: string;
@@ -23,9 +25,9 @@ const { title, description, icon, link } = Astro.props;
   <p class="description">{description}</p>
 
   {link && (
-    <a href={link} class="card-link">
+    <Button href={link} variant="ghost" size="small" class="card-link">
       Conocer más →
-    </a>
+    </Button>
   )}
 </div>
 
@@ -74,17 +76,8 @@ const { title, description, icon, link } = Astro.props;
   }
 
   .card-link {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: var(--text-body);
-    color: var(--color-secondary);
-    text-decoration: none;
-    transition: color var(--transition-fast);
     margin-top: auto;
-  }
-
-  .card-link:hover {
-    color: var(--color-primary);
+    align-self: flex-start;
   }
 
   /* Accesibilidad */
