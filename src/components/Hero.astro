@@ -1,0 +1,549 @@
+---
+/**
+ * Hero.astro
+ * Sección Hero principal con estilo Japandi
+ * Concepto: "Refugio y Estructura" - Portal hacia un espacio seguro
+ */
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Columna de Contenido -->
+      <div class="hero-content">
+
+        <!-- Etiqueta de ubicación -->
+        <span class="location-tag">
+          📍 Psicología Infantil en Mérida, Yucatán
+        </span>
+
+        <!-- Título Principal -->
+        <h1 class="hero-title">
+          Donde la mente florece con <span class="highlight">calidez</span>.
+        </h1>
+
+        <!-- Bajada -->
+        <p class="hero-description">
+          Integramos la suavidad del desarrollo emocional con la firmeza de la experiencia clínica.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-ctas">
+          <a href="/reservar" class="btn btn-primary">
+            Reservar Sesión
+          </a>
+          <a href="/servicios" class="btn btn-secondary">
+            Conocer Servicios
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Columna de Imagen con Arco -->
+      <div class="hero-visual">
+
+        <!-- Marco tipo portal/arco -->
+        <div class="arch-frame">
+          <div class="image-container">
+            <!-- Placeholder de imagen -->
+            <div class="placeholder-image">
+              <span class="emoji">🌿✨</span>
+              <p class="caption">Niño jugando y aprendiendo</p>
+            </div>
+          </div>
+
+          <!-- Elementos decorativos -->
+          <div class="deco-circle deco-circle-1" aria-hidden="true"></div>
+          <div class="deco-circle deco-circle-2" aria-hidden="true"></div>
+          <div class="deco-line" aria-hidden="true"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Blobs decorativos de fondo -->
+  <div class="bg-blob blob-1" aria-hidden="true"></div>
+  <div class="bg-blob blob-2" aria-hidden="true"></div>
+</section>
+
+
+<style>
+  /* ================================
+     HERO - Layout Principal
+     ================================ */
+
+  .hero {
+    position: relative;
+    padding: var(--spacing-xl) 0;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-surface);
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 45% 55%; /* Asimétrico */
+    gap: var(--spacing-xl);
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+
+  /* ================================
+     COLUMNA DE CONTENIDO
+     ================================ */
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    animation: fadeInUp 1s ease-out;
+  }
+
+  /* Etiqueta de ubicación */
+  .location-tag {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-secondary);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--color-secondary-container);
+    border-radius: var(--radius-full);
+    width: fit-content;
+  }
+
+  /* Título Principal */
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .hero-title .highlight {
+    color: var(--color-primary);
+    font-style: italic;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Efecto de subrayado sutil en "calidez" */
+  .hero-title .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: var(--color-accent);
+    opacity: 0.3;
+    z-index: -1;
+    border-radius: 4px;
+    transition: opacity var(--transition-base);
+  }
+
+  .hero-title .highlight:hover::after {
+    opacity: 0.5;
+  }
+
+  /* Bajada */
+  .hero-description {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.7;
+    color: var(--color-text);
+    opacity: 0.85;
+    margin: 0;
+    max-width: 500px;
+  }
+
+  /* Botones */
+  .hero-ctas {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+  }
+
+  .btn-primary:hover {
+    background-color: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(177, 156, 217, 0.25);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-surface);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(214, 146, 100, 0.25);
+  }
+
+
+  /* ================================
+     COLUMNA VISUAL - Marco tipo Arco
+     ================================ */
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    animation: fadeIn 1.2s ease-out 0.3s backwards;
+  }
+
+  /* Marco con forma de arco/portal */
+  .arch-frame {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-container {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-container),
+      var(--color-secondary-container)
+    );
+
+    /* Forma de arco/portal usando clip-path */
+    clip-path: polygon(
+      0% 20%,
+      0% 80%,
+      10% 90%,
+      20% 95%,
+      40% 98%,
+      60% 98%,
+      80% 95%,
+      90% 90%,
+      100% 80%,
+      100% 20%,
+      90% 10%,
+      80% 5%,
+      60% 2%,
+      40% 2%,
+      20% 5%,
+      10% 10%
+    );
+
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow:
+      0 20px 60px rgba(177, 156, 217, 0.15),
+      inset 0 0 60px rgba(255, 255, 255, 0.5);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Efecto hover en el arco */
+  .arch-frame:hover .image-container {
+    transform: scale(1.02) translateY(-8px);
+    box-shadow:
+      0 30px 80px rgba(177, 156, 217, 0.25),
+      inset 0 0 80px rgba(255, 255, 255, 0.6);
+  }
+
+  /* Placeholder de imagen */
+  .placeholder-image {
+    text-align: center;
+    z-index: 2;
+  }
+
+  .placeholder-image .emoji {
+    font-size: 6rem;
+    display: block;
+    margin-bottom: var(--spacing-md);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .placeholder-image .caption {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text);
+    opacity: 0.6;
+    margin: 0;
+  }
+
+
+  /* ================================
+     ELEMENTOS DECORATIVOS
+     ================================ */
+
+  /* Círculos flotantes */
+  .deco-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .deco-circle-1 {
+    width: 120px;
+    height: 120px;
+    top: 10%;
+    right: -20px;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .deco-circle-2 {
+    width: 80px;
+    height: 80px;
+    bottom: 15%;
+    left: -10px;
+    animation: pulse 4s ease-in-out infinite 2s;
+  }
+
+  /* Línea decorativa vertical */
+  .deco-line {
+    position: absolute;
+    width: 2px;
+    height: 150px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-accent),
+      transparent
+    );
+    top: -50px;
+    right: 40px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+
+  /* ================================
+     BLOBS DE FONDO
+     ================================ */
+
+  .bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .blob-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+      circle,
+      var(--color-primary),
+      transparent
+    );
+    top: -200px;
+    right: -100px;
+    animation: breathe 8s ease-in-out infinite;
+  }
+
+  .blob-2 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(
+      circle,
+      var(--color-secondary),
+      transparent
+    );
+    bottom: -150px;
+    left: -100px;
+    animation: breathe 8s ease-in-out infinite 4s;
+  }
+
+
+  /* ================================
+     ANIMACIONES
+     ================================ */
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.08;
+    }
+    50% {
+      transform: scale(1.15);
+      opacity: 0.12;
+    }
+  }
+
+
+  /* ================================
+     RESPONSIVE - Tablet y Móvil
+     ================================ */
+
+  @media (max-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .hero-visual {
+      order: -1;
+      height: 400px;
+    }
+
+    .arch-frame {
+      max-width: 350px;
+    }
+
+    .placeholder-image .emoji {
+      font-size: 4rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+      padding: var(--spacing-lg) 0;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-visual {
+      height: 350px;
+    }
+
+    .arch-frame {
+      max-width: 280px;
+    }
+
+    .deco-circle {
+      display: none;
+    }
+
+    .deco-line {
+      display: none;
+    }
+
+    .bg-blob {
+      display: none;
+    }
+  }
+
+
+  /* ================================
+     ACCESIBILIDAD
+     ================================ */
+
+  /* Respetar preferencia de movimiento reducido */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Focus states */
+  .btn:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+</style>

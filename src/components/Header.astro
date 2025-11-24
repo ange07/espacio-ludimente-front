@@ -1,0 +1,335 @@
+---
+/**
+ * Header.astro
+ * Navegación principal del sitio
+ * Incluye: Logo, menú de navegación, botón CTA
+ * Responsive con menú hamburguesa en móvil
+ */
+
+// Obtener la ruta actual para marcar el link activo
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+
+      <!-- Logo -->
+      <a href="/" class="logo" aria-label="Espacio Ludimente - Inicio">
+        <span class="logo-text">Espacio <em>Ludimente</em></span>
+      </a>
+
+      <!-- Menú hamburguesa (solo visible en móvil) -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+      <label for="menu-toggle" class="menu-icon" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Navegación -->
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li>
+            <a
+              href="/"
+              class:list={["nav-link", { active: currentPath === "/" }]}
+              aria-current={currentPath === "/" ? "page" : undefined}
+            >
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a
+              href="/servicios"
+              class:list={["nav-link", { active: currentPath === "/servicios" }]}
+              aria-current={currentPath === "/servicios" ? "page" : undefined}
+            >
+              Servicios
+            </a>
+          </li>
+          <li>
+            <a
+              href="/sobre-nosotras"
+              class:list={["nav-link", { active: currentPath === "/sobre-nosotras" }]}
+              aria-current={currentPath === "/sobre-nosotras" ? "page" : undefined}
+            >
+              Sobre Nosotras
+            </a>
+          </li>
+          <li>
+            <a
+              href="/blog"
+              class:list={["nav-link", { active: currentPath.startsWith("/blog") }]}
+              aria-current={currentPath.startsWith("/blog") ? "page" : undefined}
+            >
+              Blog
+            </a>
+          </li>
+          <li>
+            <a
+              href="/contacto"
+              class:list={["nav-link", { active: currentPath === "/contacto" }]}
+              aria-current={currentPath === "/contacto" ? "page" : undefined}
+            >
+              Contacto
+            </a>
+          </li>
+        </ul>
+
+        <!-- Botón CTA -->
+        <a href="/reservar" class="button button-primary cta-button">
+          Reservar Sesión
+        </a>
+      </nav>
+
+    </div>
+  </div>
+</header>
+
+<style>
+  /* ================================
+     HEADER - Estilos principales
+     ================================ */
+
+  .header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-outline);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+  }
+
+  /* ================================
+     LOGO
+     ================================ */
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .logo em {
+    color: var(--color-primary);
+    font-style: italic;
+  }
+
+  .logo:hover {
+    color: var(--color-primary);
+  }
+
+  /* ================================
+     NAVEGACIÓN
+     ================================ */
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-md);
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: var(--text-body);
+    color: var(--color-text);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+    background-color: var(--color-primary-container);
+  }
+
+  .nav-link.active {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  /* Subrayado sutil para link activo */
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 12px;
+    right: 12px;
+    height: 2px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+  }
+
+  /* ================================
+     BOTÓN CTA
+     ================================ */
+
+  .cta-button {
+    font-size: var(--text-body);
+    padding: 10px 20px;
+    white-space: nowrap;
+  }
+
+  /* ================================
+     MENÚ MÓVIL (Hamburguesa)
+     ================================ */
+
+  /* Ocultar checkbox (usamos CSS hack para toggle) */
+  .menu-toggle {
+    display: none;
+  }
+
+  /* Ícono hamburguesa (solo visible en móvil) */
+  .menu-icon {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+  }
+
+  /* Animación del hamburguesa cuando está abierto */
+  .menu-toggle:checked ~ .menu-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+
+  .menu-toggle:checked ~ .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle:checked ~ .menu-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* ================================
+     RESPONSIVE - Móvil
+     ================================ */
+
+  @media (max-width: 768px) {
+    /* Mostrar ícono hamburguesa */
+    .menu-icon {
+      display: flex;
+    }
+
+    /* Navegación como menú desplegable */
+    .nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 280px;
+      max-width: 80%;
+      background-color: var(--color-surface);
+      box-shadow: var(--shadow-lg);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: var(--spacing-xl) var(--spacing-md);
+      gap: var(--spacing-sm);
+
+      /* Oculto por defecto */
+      transform: translateX(100%);
+      transition: transform var(--transition-base);
+    }
+
+    /* Mostrar menú cuando checkbox está checked */
+    .menu-toggle:checked ~ .nav {
+      transform: translateX(0);
+    }
+
+    /* Lista vertical */
+    .nav-list {
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+    }
+
+    .nav-list li {
+      width: 100%;
+    }
+
+    .nav-link {
+      display: block;
+      width: 100%;
+      padding: var(--spacing-sm);
+    }
+
+    /* Botón CTA en móvil */
+    .cta-button {
+      width: 100%;
+      text-align: center;
+      margin-top: var(--spacing-md);
+    }
+
+    /* Overlay oscuro cuando menú está abierto */
+    .menu-toggle:checked ~ .nav::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 280px;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+  }
+
+  /* ================================
+     ACCESIBILIDAD
+     ================================ */
+
+  /* Focus states */
+  .logo:focus-visible,
+  .nav-link:focus-visible,
+  .cta-button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+
+  /* Skip to main content (para lectores de pantalla) */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-primary);
+    color: var(--color-text);
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+</style>

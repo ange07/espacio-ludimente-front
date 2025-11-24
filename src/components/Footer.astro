@@ -1,0 +1,333 @@
+---
+/**
+ * Footer.astro
+ * Pie de página del sitio
+ * Incluye: Logo, enlaces, contacto, redes sociales, copyright
+ */
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+
+      <!-- Columna 1: Logo y Eslogan -->
+      <div class="footer-column">
+        <a href="/" class="footer-logo">
+          <span class="logo-text">Espacio <em>Ludimente</em></span>
+        </a>
+        <p class="eslogan">
+          "Jugamos, sentimos, aprendemos, crecemos"
+        </p>
+        <p class="tagline">
+          Donde la mente aprende y florece con calidez
+        </p>
+      </div>
+
+      <!-- Columna 2: Enlaces Rápidos -->
+      <div class="footer-column">
+        <h3 class="footer-title">Enlaces</h3>
+        <ul class="footer-links">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/servicios">Servicios</a></li>
+          <li><a href="/sobre-nosotras">Sobre Nosotras</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Contacto -->
+      <div class="footer-column">
+        <h3 class="footer-title">Contacto</h3>
+        <ul class="footer-contact">
+          <li>
+            <strong>Dirección:</strong><br>
+            C. 52 107, Francisco de Montejo II<br>
+            97203 Mérida, Yucatán
+          </li>
+          <li>
+            <strong>Teléfono:</strong><br>
+            <a href="tel:+529992590623">999-259-0623</a><br>
+            <a href="tel:+529999002640">999-900-2640</a>
+          </li>
+          <li>
+            <strong>Email:</strong><br>
+            <a href="mailto:contacto.ludimente@gmail.com">
+              contacto.ludimente@gmail.com
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: Redes Sociales y WhatsApp -->
+      <div class="footer-column">
+        <h3 class="footer-title">Síguenos</h3>
+        <div class="social-links">
+          <a
+            href="https://instagram.com/espacioludimente"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            aria-label="Instagram"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            Instagram
+          </a>
+
+          <a
+            href="https://facebook.com/espacioludimente"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            aria-label="Facebook"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+            Facebook
+          </a>
+
+          <a
+            href="https://wa.me/529992590623?text=Hola,%20me%20gustaría%20agendar%20una%20sesión"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link whatsapp"
+            aria-label="WhatsApp"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Barra inferior: Copyright y Legal -->
+    <div class="footer-bottom">
+      <p class="copyright">
+        © {currentYear} Espacio Ludimente. Todos los derechos reservados.
+      </p>
+      <div class="legal-links">
+        <a href="/aviso-privacidad">Aviso de Privacidad</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  /* ================================
+     FOOTER - Estilos principales
+     ================================ */
+
+  .footer {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+    margin-top: var(--spacing-xl);
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  /* ================================
+     COLUMNAS
+     ================================ */
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  /* Logo */
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-surface);
+    text-decoration: none;
+    margin-bottom: var(--spacing-xs);
+    transition: color var(--transition-fast);
+  }
+
+  .footer-logo em {
+    color: var(--color-accent);
+    font-style: italic;
+  }
+
+  .footer-logo:hover {
+    color: var(--color-accent);
+  }
+
+  /* Eslogan y Tagline */
+  .eslogan {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-body);
+    margin: 0;
+    color: var(--color-surface);
+  }
+
+  .tagline {
+    font-family: var(--font-body);
+    font-size: var(--text-body-small);
+    margin: 0;
+    color: rgba(255, 240, 245, 0.8);
+  }
+
+  /* Títulos de columnas */
+  .footer-title {
+    font-family: var(--font-display);
+    font-size: var(--text-headline-medium);
+    font-weight: 700;
+    color: var(--color-surface);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  /* ================================
+     LISTAS
+     ================================ */
+
+  .footer-links,
+  .footer-contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .footer-links a,
+  .footer-contact a {
+    color: var(--color-surface);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    display: inline-block;
+  }
+
+  .footer-links a:hover,
+  .footer-contact a:hover {
+    color: var(--color-accent);
+    transform: translateX(4px);
+  }
+
+  .footer-contact li {
+    font-size: var(--text-body-small);
+    line-height: 1.6;
+  }
+
+  .footer-contact strong {
+    color: var(--color-surface);
+    font-weight: 600;
+  }
+
+  /* ================================
+     REDES SOCIALES
+     ================================ */
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-surface);
+    text-decoration: none;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .social-link:hover {
+    background-color: rgba(255, 240, 245, 0.1);
+    color: var(--color-accent);
+    transform: translateX(4px);
+  }
+
+  .social-link.whatsapp:hover {
+    background-color: rgba(37, 211, 102, 0.2);
+    color: #25d366;
+  }
+
+  .social-link svg {
+    flex-shrink: 0;
+  }
+
+  /* ================================
+     BARRA INFERIOR (Copyright)
+     ================================ */
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 240, 245, 0.2);
+    padding-top: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .copyright {
+    font-size: var(--text-body-small);
+    color: rgba(255, 240, 245, 0.8);
+    margin: 0;
+  }
+
+  .legal-links {
+    display: flex;
+    gap: var(--spacing-sm);
+  }
+
+  .legal-links a {
+    font-size: var(--text-body-small);
+    color: rgba(255, 240, 245, 0.8);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .legal-links a:hover {
+    color: var(--color-accent);
+  }
+
+  /* ================================
+     RESPONSIVE - Móvil
+     ================================ */
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  /* ================================
+     ACCESIBILIDAD
+     ================================ */
+
+  .footer a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+</style>
