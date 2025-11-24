@@ -1,0 +1,164 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Reservar Sesión - Espacio Ludimente" description="Agenda tu primera sesión de valoración. Psicología infantil y adolescente en Mérida.">
+  <section class="booking-page">
+    <div class="container">
+      <div class="booking-grid">
+        
+        <!-- Columna Izquierda: Info y FAQ -->
+        <div class="booking-info">
+          <h1>Reserva tu primera sesión</h1>
+          
+          <div class="info-card">
+            <h2>¿Cómo funciona?</h2>
+            <ol class="steps-list">
+              <li>
+                <strong>Conocemos a tu hijo:</strong>
+                <p>Platicamos sobre lo que les preocupa y observamos la dinámica.</p>
+              </li>
+              <li>
+                <strong>Evaluación breve:</strong>
+                <p>Identificamos las áreas clave a trabajar.</p>
+              </li>
+              <li>
+                <strong>Plan de acción:</strong>
+                <p>Diseñamos juntos objetivos claros y medibles.</p>
+              </li>
+            </ol>
+            <p class="note">
+              💡 <strong>Tip:</strong> No es necesario decirle a tu hijo que va al "psicólogo". Puedes decirle que irán a un lugar a jugar y aprender sobre las emociones.
+            </p>
+          </div>
+
+          <div class="faq-section">
+            <h3>Preguntas Frecuentes</h3>
+            
+            <details class="faq-item">
+              <summary>¿Cuánto cuesta la primera sesión?</summary>
+              <p>$500 MXN. El pago se puede realizar en efectivo o transferencia al finalizar.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>¿Cuánto dura la sesión?</summary>
+              <p>50 minutos aproximadamente.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>¿Debo llevar algo?</summary>
+              <p>No es necesario traer nada específico, solo tu disposición para platicar. Si tienes informes escolares previos, pueden ser útiles.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>¿Qué pasa si no puedo asistir?</summary>
+              <p>Te pedimos cancelar o reprogramar con al menos 24 horas de anticipación para no generar cargos.</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Calendly -->
+        <div class="calendly-wrapper">
+          <!-- Calendly inline widget begin -->
+          <div class="calendly-inline-widget" data-url="https://calendly.com/espacioludimente/primera-sesion" style="min-width:320px;height:700px;"></div>
+          <script is:inline type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          <!-- Calendly inline widget end -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .booking-page {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .booking-info h1 {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .info-card {
+    background-color: var(--color-surface);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .steps-list {
+    padding-left: 20px;
+    margin: var(--spacing-md) 0;
+  }
+
+  .steps-list li {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .steps-list strong {
+    color: var(--color-primary);
+  }
+
+  .note {
+    font-size: 0.9rem;
+    background-color: white;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .faq-section h3 {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-outline);
+    padding: var(--spacing-sm) 0;
+  }
+
+  .faq-item summary {
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 24px;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+  }
+
+  .faq-item[open] summary::after {
+    content: '-';
+  }
+
+  .faq-item p {
+    margin-top: var(--spacing-sm);
+    color: #666;
+    font-size: 0.95rem;
+  }
+
+  .calendly-wrapper {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    min-height: 700px;
+  }
+
+  @media (max-width: 900px) {
+    .booking-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
