@@ -1,0 +1,99 @@
+---
+/**
+ * TestimonialCard.astro
+ * Card para mostrar testimonios de familias
+ * Props: quote, author, role (opcional)
+ */
+
+interface Props {
+  quote: string;
+  author: string;
+  role?: string;
+}
+
+const { quote, author, role } = Astro.props;
+---
+
+<div class="testimonial-card">
+  <!-- Comillas decorativas -->
+  <div class="quote-mark" aria-hidden="true">"</div>
+
+  <!-- Texto del testimonio -->
+  <blockquote class="quote">
+    {quote}
+  </blockquote>
+
+  <!-- Autor -->
+  <cite class="author">
+    <strong>{author}</strong>
+    {role && <span class="role">{role}</span>}
+  </cite>
+</div>
+
+<style>
+  .testimonial-card {
+    background-color: var(--color-primary-container);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    height: 100%;
+  }
+
+  /* Comillas decorativas */
+  .quote-mark {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    opacity: 0.3;
+  }
+
+  /* Cita */
+  .quote {
+    font-family: var(--font-display);
+    font-size: var(--text-body-large);
+    font-style: italic;
+    color: var(--color-text);
+    line-height: 1.6;
+    margin: 0;
+    padding-top: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Autor */
+  .author {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--color-text);
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: auto;
+  }
+
+  .author strong {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .role {
+    font-size: var(--text-body-small);
+    color: var(--color-text);
+    opacity: 0.7;
+  }
+
+  /* Efecto hover sutil */
+  .testimonial-card:hover {
+    transform: scale(1.02);
+    transition: transform var(--transition-base);
+  }
+</style>
