@@ -12,8 +12,5 @@ export default defineConfig({
   },
 
   // Configuración de build
-  build: {
-    // Genera sitemap automáticamente
-    sitemap: true
-  }
+  // (Sitemap se puede agregar después con @astrojs/sitemap integration)
 });

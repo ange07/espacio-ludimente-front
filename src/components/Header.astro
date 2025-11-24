@@ -6,6 +6,8 @@
  * Responsive con menú hamburguesa en móvil
  */
 
+import Button from './Button.astro';
+
 // Obtener la ruta actual para marcar el link activo
 const currentPath = Astro.url.pathname;
 ---
@@ -78,9 +80,9 @@ const currentPath = Astro.url.pathname;
         </ul>
 
         <!-- Botón CTA -->
-        <a href="/reservar" class="button button-primary cta-button">
+        <Button href="/reservar" variant="primary" size="medium" class="cta-button">
           Reservar Sesión
-        </a>
+        </Button>
       </nav>
 
     </div>
@@ -93,7 +95,7 @@ const currentPath = Astro.url.pathname;
      ================================ */
 
   .header {
-    background-color: var(--color-surface);
+    background-color: var(--color-background);
     border-bottom: 1px solid var(--color-outline);
     position: sticky;
     top: 0;
@@ -187,8 +189,6 @@ const currentPath = Astro.url.pathname;
      ================================ */
 
   .cta-button {
-    font-size: var(--text-body);
-    padding: 10px 20px;
     white-space: nowrap;
   }
 

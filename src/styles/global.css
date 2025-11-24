@@ -148,50 +148,11 @@ a:focus-visible {
 }
 
 /* ====================================
-   BOTONES (estilos base)
+   BOTONES
    ==================================== */
 
-button, .button {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: var(--text-body);
-  padding: 12px 24px;
-  border-radius: var(--radius-md);
-  border: none;
-  cursor: pointer;
-  transition: all var(--transition-base);
-  display: inline-block;
-  text-align: center;
-}
-
-button:focus-visible, .button:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 4px;
-}
-
-/* Botón Primary */
-.button-primary {
-  background-color: var(--color-primary);
-  color: var(--color-text);
-}
-
-.button-primary:hover {
-  background-color: #9B7FC9;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Botón Secondary */
-.button-secondary {
-  background-color: var(--color-secondary);
-  color: var(--color-surface);
-}
-
-.button-secondary:hover {
-  background-color: #C67F54;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
+/* Los botones ahora se manejan con el componente Button.astro
+   Sistema de diseño con "Digital Tactility" inspirado en Apple + Material 3 */
 
 /* ====================================
    UTILIDADES
