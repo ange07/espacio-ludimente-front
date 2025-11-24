@@ -1,0 +1,231 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Button from '../components/Button.astro';
+
+const services = [
+  {
+    title: "Terapia Individual TCC (Niños 6-12 años)",
+    target: "Para niños con ansiedad, miedos, berrinches o problemas de conducta.",
+    focus: ["Identificación de emociones", "Técnicas de regulación", "Reestructuración cognitiva", "Resolución de problemas"],
+    method: "Sesiones de 50 min, juego terapéutico y participación activa de padres.",
+    price: "$500 MXN por sesión",
+    icon: "🧸"
+  },
+  {
+    title: "Terapia Individual TCC (Adolescentes 13-17 años)",
+    target: "Para ansiedad social, autoestima, manejo de ira o adaptación.",
+    focus: ["Habilidades sociales", "Manejo de estrés", "Creencias limitantes", "Planificación"],
+    method: "Sesiones de 50 min, diálogo directo y herramientas digitales.",
+    price: "$500 MXN por sesión",
+    icon: "🎧"
+  },
+  {
+    title: "Evaluación Psicopedagógica",
+    target: "Dificultades escolares, sospecha de TDAH o dislexia.",
+    focus: ["Entrevista con padres", "Pruebas estandarizadas", "Observación conductual", "Informe detallado"],
+    method: "Proceso de 3-4 sesiones con entrega de resultados.",
+    price: "Cotización según caso",
+    icon: "📋"
+  },
+  {
+    title: "Talleres para Padres",
+    target: "Crianza positiva, manejo de berrinches y ansiedad.",
+    focus: ["Estrategias prácticas", "Límites con amor", "Resolución de dudas"],
+    method: "Formato grupal (6-10 familias), 2 horas.",
+    price: "$300 MXN por familia",
+    icon: "users" // Using a keyword for now, or could be an SVG
+  }
+];
+---
+
+<MainLayout title="Servicios - Espacio Ludimente" description="Terapia infantil, evaluaciones psicopedagógicas y talleres para padres en Mérida.">
+  <section class="hero-services">
+    <div class="container text-center">
+      <h1>Nuestros <em>Servicios</em></h1>
+      <p class="subtitle">Herramientas específicas para cada necesidad familiar</p>
+    </div>
+  </section>
+
+  <section class="services-list container">
+    {services.map((service, index) => (
+      <article class="service-detail">
+        <div class="service-header">
+          <div class="icon-wrapper">{service.icon === 'users' ? '👥' : service.icon}</div>
+          <h2>{service.title}</h2>
+        </div>
+        
+        <div class="service-body">
+          <div class="section-block">
+            <h3>¿Para quién es?</h3>
+            <p>{service.target}</p>
+          </div>
+
+          <div class="section-block">
+            <h3>¿Qué trabajaremos?</h3>
+            <ul class="check-list">
+              {service.focus.map(item => <li>{item}</li>)}
+            </ul>
+          </div>
+
+          <div class="section-block">
+            <h3>¿Cómo lo hacemos?</h3>
+            <p>{service.method}</p>
+          </div>
+
+          <div class="service-footer">
+            <p class="price"><strong>Inversión:</strong> {service.price}</p>
+            <Button href="/reservar" variant="primary" size="md">
+              Reservar cita
+            </Button>
+          </div>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <section class="cta-section">
+    <div class="container text-center">
+      <h2>¿Tienes dudas sobre qué servicio necesitas?</h2>
+      <p>Escríbenos y te orientamos sin compromiso.</p>
+      <div class="cta-buttons">
+        <Button href="/contacto" variant="secondary">Contáctanos</Button>
+        <Button href="https://wa.me/529992590623" variant="outline">WhatsApp</Button>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .hero-services {
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    background-color: var(--color-surface);
+  }
+
+  .subtitle {
+    font-size: var(--text-body-large);
+    color: var(--color-text);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .service-detail {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-outline);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base);
+  }
+
+  .service-detail:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+  }
+
+  .service-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-surface);
+    padding-bottom: var(--spacing-md);
+  }
+
+  .icon-wrapper {
+    font-size: 3rem;
+    background: var(--color-primary-container);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .service-detail h2 {
+    margin: 0;
+    font-size: var(--text-headline-medium);
+  }
+
+  .service-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .section-block h3 {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .check-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .check-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 8px;
+  }
+
+  .check-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+    font-weight: bold;
+  }
+
+  .service-footer {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-surface);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+
+  .price {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .cta-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-primary-container);
+    margin-top: var(--spacing-xl);
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+  }
+
+  @media (max-width: 768px) {
+    .service-header {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .service-footer {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
