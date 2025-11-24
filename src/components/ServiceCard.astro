@@ -1,0 +1,95 @@
+---
+/**
+ * ServiceCard.astro
+ * Card para mostrar servicios
+ * Props: title, description, icon (emoji o SVG), link (opcional)
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  link?: string;
+}
+
+const { title, description, icon, link } = Astro.props;
+---
+
+<div class="service-card">
+  <div class="icon" aria-hidden="true">{icon}</div>
+
+  <h3 class="title">{title}</h3>
+
+  <p class="description">{description}</p>
+
+  {link && (
+    <a href={link} class="card-link">
+      Conocer más →
+    </a>
+  )}
+</div>
+
+<style>
+  .service-card {
+    background-color: var(--color-background);
+    border: 2px solid var(--color-outline);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    height: 100%;
+  }
+
+  .service-card:hover {
+    background-color: var(--color-primary-container);
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .icon {
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: var(--text-headline-medium);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .description {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--color-text);
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .card-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-body);
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    margin-top: auto;
+  }
+
+  .card-link:hover {
+    color: var(--color-primary);
+  }
+
+  /* Accesibilidad */
+  .service-card:focus-within {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+</style>
