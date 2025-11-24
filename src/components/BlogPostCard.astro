@@ -4,13 +4,9 @@
  * Tarjeta para mostrar resumen de artículos del blog
  */
 
-interface Props {
-  title: string;
-  excerpt: string;
-  date: string;
-  slug: string;
-  image?: string;
-}
+import type { BlogPost } from '../data/types';
+
+interface Props extends BlogPost {}
 
 const { title, excerpt, date, slug, image = "/images/blog-placeholder.jpg" } = Astro.props;
 ---
