@@ -1,0 +1,73 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import BlogPostCard from '../../components/BlogPostCard.astro';
+
+// Mock data based on ARQUITECTURA.md
+const posts = [
+  {
+    title: "¿Qué es la Terapia Cognitivo Conductual y por qué funciona?",
+    excerpt: "Descubre por qué la TCC es el enfoque con mayor respaldo científico para trabajar con niños y adolescentes.",
+    date: "2025-11-20",
+    slug: "que-es-la-tcc",
+    image: "/images/blog/tcc-intro.jpg"
+  },
+  {
+    title: "5 Estrategias para Manejar Berrinches Intensos",
+    excerpt: "Guía práctica para padres: validación emocional, límites claros y cuándo pedir ayuda profesional.",
+    date: "2025-11-15",
+    slug: "manejo-berrinches",
+    image: "/images/blog/berrinches.jpg"
+  },
+  {
+    title: "La Ansiedad en Niños: Señales y Qué Hacer",
+    excerpt: "Aprende a diferenciar entre miedos normales y ansiedad que requiere atención. Herramientas para casa.",
+    date: "2025-11-10",
+    slug: "ansiedad-ninos",
+    image: "/images/blog/ansiedad.jpg"
+  },
+  {
+    title: "Crianza Positiva: Límites Sin Gritos",
+    excerpt: "Cómo establecer consecuencias naturales y dar instrucciones efectivas sin perder la conexión con tu hijo.",
+    date: "2025-11-05",
+    slug: "crianza-positiva",
+    image: "/images/blog/crianza.jpg"
+  }
+];
+---
+
+<MainLayout title="Blog - Espacio Ludimente" description="Artículos y recursos sobre psicología infantil, crianza y TCC en Mérida.">
+  <section class="hero-blog">
+    <div class="container text-center">
+      <h1>Recursos para <em>Familias</em></h1>
+      <p class="subtitle">Artículos, tips y herramientas basadas en evidencia para acompañar el crecimiento de tus hijos.</p>
+    </div>
+  </section>
+
+  <section class="blog-grid container">
+    {posts.map(post => (
+      <BlogPostCard {...post} />
+    ))}
+  </section>
+</MainLayout>
+
+<style>
+  .hero-blog {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-surface);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .subtitle {
+    font-size: var(--text-body-large);
+    color: var(--color-text);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
+  }
+</style>
