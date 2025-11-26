@@ -2,17 +2,19 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Button from '../components/Button.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <MainLayout title="Contacto - Espacio Ludimente" description="Contáctanos para agendar una cita o resolver tus dudas. Psicología infantil en Francisco de Montejo, Mérida.">
+  <PageHero 
+    title="Hablemos" 
+    subtitle="Estamos aquí para escuchar tus dudas y encontrar el mejor camino para tu familia."
+    variant="centered"
+  />
+
   <section class="contact-page">
     <div class="container">
-      <div class="page-header text-center">
-        <h1>Hablemos</h1>
-        <p>Estamos aquí para escuchar tus dudas y encontrar el mejor camino para tu familia.</p>
-      </div>
-
-      <div class="contact-grid">
+      <div class="grid grid-2" style="gap: var(--spacing-xl); align-items: start;">
         <!-- Columna Izquierda: Info -->
         <div class="contact-info">
           <div class="info-block">
@@ -22,6 +24,7 @@ import Button from '../components/Button.astro';
               97203 Mérida, Yucatán
             </p>
             <div class="map-container">
+              <!-- TODO: Actualizar iframe con la ubicación real -->
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8977453149246!2d-89.6499999!3d21.0366667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDAyJzEyLjAiTiA4OcKwMzknMDAuMCJX!5e0!3m2!1ses-419!2smx!4v1600000000000!5m2!1ses-419!2smx" 
                 width="100%" 
@@ -66,18 +69,7 @@ import Button from '../components/Button.astro';
 
 <style>
   .contact-page {
-    padding: var(--spacing-xl) 0;
-  }
-
-  .page-header {
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xl);
-    align-items: start;
+    padding-bottom: var(--spacing-xl);
   }
 
   .info-block {
@@ -120,10 +112,6 @@ import Button from '../components/Button.astro';
   }
 
   @media (max-width: 768px) {
-    .contact-grid {
-      grid-template-columns: 1fr;
-    }
-    
     .contact-form-wrapper {
       order: -1; /* Formulario primero en móvil */
     }
