@@ -1,54 +1,21 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import Button from '../components/Button.astro';
-
-const services = [
-  {
-    title: "Terapia Individual TCC (Niños 6-12 años)",
-    target: "Para niños con ansiedad, miedos, berrinches o problemas de conducta.",
-    focus: ["Identificación de emociones", "Técnicas de regulación", "Reestructuración cognitiva", "Resolución de problemas"],
-    method: "Sesiones de 50 min, juego terapéutico y participación activa de padres.",
-    price: "$500 MXN por sesión",
-    icon: "🧸"
-  },
-  {
-    title: "Terapia Individual TCC (Adolescentes 13-17 años)",
-    target: "Para ansiedad social, autoestima, manejo de ira o adaptación.",
-    focus: ["Habilidades sociales", "Manejo de estrés", "Creencias limitantes", "Planificación"],
-    method: "Sesiones de 50 min, diálogo directo y herramientas digitales.",
-    price: "$500 MXN por sesión",
-    icon: "🎧"
-  },
-  {
-    title: "Evaluación Psicopedagógica",
-    target: "Dificultades escolares, sospecha de TDAH o dislexia.",
-    focus: ["Entrevista con padres", "Pruebas estandarizadas", "Observación conductual", "Informe detallado"],
-    method: "Proceso de 3-4 sesiones con entrega de resultados.",
-    price: "Cotización según caso",
-    icon: "📋"
-  },
-  {
-    title: "Talleres para Padres",
-    target: "Crianza positiva, manejo de berrinches y ansiedad.",
-    focus: ["Estrategias prácticas", "Límites con amor", "Resolución de dudas"],
-    method: "Formato grupal (6-10 familias), 2 horas.",
-    price: "$300 MXN por familia",
-    icon: "users" // Using a keyword for now, or could be an SVG
-  }
-];
+import PageHero from '../components/PageHero.astro';
+import CTASection from '../components/CTASection.astro';
+import { services } from '../data/services';
 ---
 
 <MainLayout title="Servicios - Espacio Ludimente" description="Terapia infantil, evaluaciones psicopedagógicas y talleres para padres en Mérida.">
-  <section class="hero-services">
-    <div class="container text-center">
-      <h1>Nuestros <em>Servicios</em></h1>
-      <p class="subtitle">Herramientas específicas para cada necesidad familiar</p>
-    </div>
-  </section>
+  <PageHero 
+    title="Nuestros <em>Servicios</em>" 
+    subtitle="Herramientas específicas para cada necesidad familiar"
+    variant="centered"
+  />
 
   <section class="services-list container">
-    {services.map((service, index) => (
-      <article class="service-detail">
+    {services.map((service) => (
+      <article class="service-detail card-hover">
         <div class="service-header">
           <div class="icon-wrapper">{service.icon === 'users' ? '👥' : service.icon}</div>
           <h2>{service.title}</h2>
@@ -83,36 +50,20 @@ const services = [
     ))}
   </section>
 
-  <section class="cta-section">
-    <div class="container text-center">
-      <h2>¿Tienes dudas sobre qué servicio necesitas?</h2>
-      <p>Escríbenos y te orientamos sin compromiso.</p>
-      <div class="cta-buttons">
-        <Button href="/contacto" variant="secondary">Contáctanos</Button>
-        <Button href="https://wa.me/529992590623" variant="outline">WhatsApp</Button>
-      </div>
-    </div>
-  </section>
+  <CTASection 
+    title="¿Tienes dudas sobre qué servicio necesitas?"
+    description="Escríbenos y te orientamos sin compromiso."
+    primaryCTA={{ text: "Contáctanos", href: "/contacto", variant: "secondary" }}
+    secondaryCTA={{ text: "WhatsApp", href: "https://wa.me/529992590623", variant: "outline" }}
+  />
 </MainLayout>
 
 <style>
-  .hero-services {
-    padding: var(--spacing-xl) 0 var(--spacing-lg);
-    background-color: var(--color-surface);
-  }
-
-  .subtitle {
-    font-size: var(--text-body-large);
-    color: var(--color-text);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
   .services-list {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xl);
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding-bottom: var(--spacing-xl);
   }
 
   .service-detail {
@@ -121,13 +72,7 @@ const services = [
     border: 1px solid var(--color-outline);
     padding: var(--spacing-lg);
     box-shadow: var(--shadow-sm);
-    transition: transform var(--transition-base);
-  }
-
-  .service-detail:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--color-primary);
+    /* transition handled by .card-hover */
   }
 
   .service-header {
@@ -202,19 +147,6 @@ const services = [
   .price {
     font-size: 1.1rem;
     margin: 0;
-  }
-
-  .cta-section {
-    padding: var(--spacing-xl) 0;
-    background-color: var(--color-primary-container);
-    margin-top: var(--spacing-xl);
-  }
-
-  .cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-md);
   }
 
   @media (max-width: 768px) {
