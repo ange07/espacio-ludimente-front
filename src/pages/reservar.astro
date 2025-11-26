@@ -60,6 +60,7 @@ import MainLayout from '../layouts/MainLayout.astro';
         <!-- Columna Derecha: Calendly -->
         <div class="calendly-wrapper">
           <!-- Calendly inline widget begin -->
+          <!-- TODO: Verificar URL de Calendly -->
           <div class="calendly-inline-widget" data-url="https://calendly.com/espacioludimente/primera-sesion" style="min-width:320px;height:700px;"></div>
           <script is:inline type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
           <!-- Calendly inline widget end -->
@@ -156,7 +157,7 @@ import MainLayout from '../layouts/MainLayout.astro';
     min-height: 700px;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     .booking-grid {
       grid-template-columns: 1fr;
     }
