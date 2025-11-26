@@ -1,0 +1,183 @@
+---
+/**
+ * 404.astro
+ * Página de error personalizada para rutas no encontradas
+ * Mantiene el branding y ayuda a los usuarios a regresar al sitio
+ */
+
+import MainLayout from '../layouts/MainLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<MainLayout
+  title="Página no encontrada - Espacio Ludimente"
+  description="La página que buscas no existe. Regresa a nuestra página principal o contáctanos para ayudarte."
+>
+  <section class="error-page">
+    <div class="container">
+      <div class="error-content">
+        <!-- Error code -->
+        <div class="error-number" aria-hidden="true">404</div>
+
+        <!-- Main heading -->
+        <h1 class="error-title">Página no encontrada</h1>
+
+        <!-- Friendly message -->
+        <p class="error-message">
+          Lo sentimos, la página que buscas no existe o ha sido movida.
+          No te preocupes, te ayudamos a encontrar lo que necesitas.
+        </p>
+
+        <!-- Action buttons -->
+        <div class="error-actions">
+          <Button
+            href="/"
+            variant="primary"
+            size="lg"
+          >
+            Volver al inicio
+          </Button>
+
+          <Button
+            href="/contacto"
+            variant="outline"
+            size="lg"
+          >
+            Contáctanos
+          </Button>
+        </div>
+
+        <!-- Helpful links -->
+        <div class="helpful-links">
+          <p class="links-title">Páginas más visitadas:</p>
+          <nav aria-label="Enlaces útiles">
+            <ul>
+              <li><a href="/servicios">Nuestros Servicios</a></li>
+              <li><a href="/sobre-nosotras">Sobre Nosotras</a></li>
+              <li><a href="/reservar">Reservar Sesión</a></li>
+              <li><a href="/blog">Blog</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .error-page {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(
+      135deg,
+      var(--color-surface) 0%,
+      var(--color-primary-container) 100%
+    );
+  }
+
+  .error-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .error-number {
+    font-size: clamp(4rem, 15vw, 8rem);
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.3;
+  }
+
+  .error-title {
+    font-family: var(--font-display);
+    font-size: var(--text-headline-large);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .error-message {
+    font-size: var(--text-body-large);
+    color: var(--color-text);
+    opacity: 0.85;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .error-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .helpful-links {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-outline);
+  }
+
+  .links-title {
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .helpful-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .helpful-links a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-base);
+  }
+
+  .helpful-links a:hover {
+    background-color: var(--color-primary-container);
+  }
+
+  .helpful-links a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .error-page {
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .error-number {
+      font-size: clamp(3rem, 12vw, 6rem);
+    }
+
+    .error-actions {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .helpful-links ul {
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+  }
+</style>
