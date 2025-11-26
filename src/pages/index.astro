@@ -10,6 +10,9 @@ import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import CTASection from '../components/CTASection.astro';
+import { features } from '../data/features';
+import { testimonials } from '../data/testimonials';
+import { contactInfo } from '../data/contact-info';
 ---
 
 <MainLayout
@@ -77,31 +80,13 @@ import CTASection from '../components/CTASection.astro';
       </div>
 
       <div class="features-grid">
-
-        <div class="feature-card">
-          <div class="feature-icon">🧠</div>
-          <h3>Basado en evidencia</h3>
-          <p>TCC probada científicamente, no modas o tendencias sin respaldo.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">💜</div>
-          <h3>Herramientas prácticas</h3>
-          <p>No solo escuchamos, equipamos a las familias con estrategias concretas.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h3>Objetivos claros</h3>
-          <p>Desde la primera sesión sabrás qué trabajamos, por qué y cómo medimos el progreso.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🌿</div>
-          <h3>Calidez humana</h3>
-          <p>Profesionalismo sin frialdad. Un espacio donde las emociones tienen permiso de existir.</p>
-        </div>
-
+        {features.map((feature) => (
+          <div class="feature-card">
+            <div class="feature-icon">{feature.icon}</div>
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </div>
+        ))}
       </div>
 
     </div>
@@ -119,25 +104,13 @@ import CTASection from '../components/CTASection.astro';
       </div>
 
       <div class="testimonials-grid">
-
-        <TestimonialCard
-          quote="Antes de venir a Ludimente, los berrinches de mi hijo nos abrumaban. Ahora tenemos herramientas claras y vemos progreso cada semana. ¡Gracias!"
-          author="Laura M."
-          role="Mamá de Santiago (6 años)"
-        />
-
-        <TestimonialCard
-          quote="Lo que más me gustó fue la transparencia. Desde el día 1 supimos qué iban a trabajar y cómo medirían el avance."
-          author="Carlos P."
-          role="Papá de Sofía (9 años)"
-        />
-
-        <TestimonialCard
-          quote="Mi hija tenía mucha ansiedad antes de dormir. Con las técnicas que aprendimos aquí, ahora tiene más control y se siente segura."
-          author="Ana R."
-          role="Mamá de Valeria (7 años)"
-        />
-
+        {testimonials.map((testimonial) => (
+          <TestimonialCard
+            quote={testimonial.quote}
+            author={testimonial.author}
+            role={testimonial.role}
+          />
+        ))}
       </div>
 
     </div>
@@ -150,11 +123,11 @@ import CTASection from '../components/CTASection.astro';
   <!-- ================================
        SECCIÓN: CTA FINAL
        ================================ -->
-  <CTASection 
+  <CTASection
     title="¿Listos para empezar?"
     description="La primera sesión es una evaluación inicial donde conocemos a tu hijo, entendemos qué está pasando y diseñamos un plan personalizado."
     primaryCTA={{ text: "Reservar primera sesión", href: "/reservar", variant: "primary" }}
-    secondaryCTA={{ text: "Escribirnos por WhatsApp", href: "https://wa.me/529992590623?text=Hola,%20me%20gustaría%20agendar%20una%20sesión", variant: "outline" }}
+    secondaryCTA={{ text: "Escribirnos por WhatsApp", href: contactInfo.social.find(s => s.platform === 'whatsapp')?.url || "#", variant: "outline" }}
   />
 
 </MainLayout>
