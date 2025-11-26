@@ -3,6 +3,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Button from '../components/Button.astro';
 import PageHero from '../components/PageHero.astro';
+import { contactInfo } from '../data/contact-info';
 ---
 
 <MainLayout title="Contacto - Espacio Ludimente" description="Contáctanos para agendar una cita o resolver tus dudas. Psicología infantil en Francisco de Montejo, Mérida.">
@@ -20,17 +21,16 @@ import PageHero from '../components/PageHero.astro';
           <div class="info-block">
             <h3>📍 Ubicación</h3>
             <p>
-              C. 52 107, Francisco de Montejo II<br>
-              97203 Mérida, Yucatán
+              {contactInfo.address.street}, {contactInfo.address.neighborhood}<br>
+              {contactInfo.address.zipCode} {contactInfo.address.city}, {contactInfo.address.state}
             </p>
             <div class="map-container">
-              <!-- TODO: Actualizar iframe con la ubicación real -->
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8977453149246!2d-89.6499999!3d21.0366667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDAyJzEyLjAiTiA4OcKwMzknMDAuMCJX!5e0!3m2!1ses-419!2smx!4v1600000000000!5m2!1ses-419!2smx" 
-                width="100%" 
-                height="250" 
-                style="border:0;" 
-                allowfullscreen="" 
+              <iframe
+                src={contactInfo.location.googleMapsUrl}
+                width="100%"
+                height="250"
+                style="border:0;"
+                allowfullscreen=""
                 loading="lazy"
                 title="Mapa de ubicación Espacio Ludimente">
               </iframe>
@@ -41,19 +41,19 @@ import PageHero from '../components/PageHero.astro';
             <h3>📞 Contacto Directo</h3>
             <p>Llámanos o escríbenos por WhatsApp:</p>
             <div class="contact-buttons">
-              <Button href="tel:+529992590623" variant="outline" size="sm">999-259-0623</Button>
-              <Button href="https://wa.me/529992590623" variant="secondary" size="sm">WhatsApp</Button>
+              <Button href={`tel:${contactInfo.phone.primary}`} variant="outline" size="sm">{contactInfo.phone.formatted.primary}</Button>
+              <Button href={contactInfo.social.find(s => s.platform === 'whatsapp')?.url || "#"} variant="secondary" size="sm">WhatsApp</Button>
             </div>
             <p class="email-link">
-              <a href="mailto:contacto.ludimente@gmail.com">contacto.ludimente@gmail.com</a>
+              <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
             </p>
           </div>
 
           <div class="info-block">
             <h3>⏰ Horarios</h3>
             <ul class="schedule-list">
-              <li><strong>Lunes a Viernes:</strong> 9:00 AM - 7:00 PM</li>
-              <li><strong>Sábados:</strong> 9:00 AM - 2:00 PM</li>
+              <li><strong>Lunes a Viernes:</strong> {contactInfo.hours.weekdays}</li>
+              <li><strong>Sábados:</strong> {contactInfo.hours.weekends}</li>
             </ul>
           </div>
         </div>
