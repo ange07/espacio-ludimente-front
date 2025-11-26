@@ -1,0 +1,67 @@
+---
+/**
+ * PageHero.astro
+ * Encabezado estándar para páginas interiores
+ */
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  variant?: 'default' | 'centered';
+}
+
+const { title, subtitle, variant = 'centered' } = Astro.props;
+---
+
+<section class:list={["page-hero", `hero-${variant}`]}>
+  <div class="container">
+    <div class="hero-content">
+      <h1 set:html={title} />
+      {subtitle && <p class="subtitle">{subtitle}</p>}
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-surface); /* Default background */
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .subtitle {
+    font-size: var(--text-body-large);
+    color: var(--color-text);
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Variantes */
+  .hero-centered {
+    text-align: center;
+  }
+
+  .hero-default {
+    text-align: left;
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: var(--spacing-lg) 0;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+    }
+  }
+</style>
