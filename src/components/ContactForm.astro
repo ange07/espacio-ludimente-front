@@ -6,12 +6,13 @@
  */
 
 import Button from './Button.astro';
+import { siteConfig } from '../data/site-config';
 
 interface Props {
   action?: string;
 }
 
-const { action = "https://formspree.io/f/YOUR_FORM_ID" } = Astro.props;
+const { action = siteConfig.formspreeEndpoint } = Astro.props;
 ---
 
 <form action={action} method="POST" class="contact-form">

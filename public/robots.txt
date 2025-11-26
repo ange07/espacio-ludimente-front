@@ -1,0 +1,13 @@
+# robots.txt for Espacio Ludimente
+# https://espacioludimente.com
+
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://espacioludimente.com/sitemap.xml
+
+# Crawl delay (optional, helps prevent server overload)
+# Uncomment if needed:
+# Crawl-delay: 1

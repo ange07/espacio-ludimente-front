@@ -15,6 +15,7 @@ interface Props {
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   class?: string;
+  target?: string;
 }
 
 const {
@@ -23,7 +24,8 @@ const {
   href,
   type = 'button',
   disabled = false,
-  class: className = ''
+  class: className = '',
+  target
 } = Astro.props;
 
 // Polimorfismo inteligente: ¿Link o Button?
@@ -31,7 +33,7 @@ const Tag = href ? 'a' : 'button';
 
 // Props específicas según el tipo
 const specificProps = href
-  ? { href, ...(href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' }) }
+  ? { href, target: target || (href.startsWith('http') ? '_blank' : undefined), rel: (target === '_blank' || href.startsWith('http')) ? 'noopener noreferrer' : undefined }
   : { type, disabled };
 
 // Clases combinadas

@@ -1,31 +1,15 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-
-const team = [
-  {
-    name: "Psic. Angélica del Carmen Chin Cantillo",
-    role: "Psicóloga Infantil & Fundadora",
-    bio: "Especialista en ansiedad infantil y TDAH. Creo firmemente que cada niño tiene un superpoder esperando ser descubierto.",
-    image: "/images/angelica-placeholder.jpg" // Placeholder
-  },
-  {
-    name: "Psic. María Teresa Castillo Vega",
-    role: "Psicóloga Educativa",
-    bio: "Apasionada por el aprendizaje y la inteligencia emocional. Mi meta es que la escuela sea un lugar feliz para todos.",
-    image: "/images/teresa-placeholder.jpg" // Placeholder
-  }
-];
+import PageHero from '../components/PageHero.astro';
+import { team } from '../data/team';
 ---
 
 <MainLayout title="Sobre Nosotras - Espacio Ludimente" description="Conoce a Angélica y María Teresa, psicólogas especialistas en TCC infantil en Mérida.">
-  <section class="hero-about">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Psicólogas con corazón de <em>maestras</em></h1>
-        <p class="lead">Creamos Espacio Ludimente porque creemos que la terapia debe ser un lugar seguro, divertido y transformador.</p>
-      </div>
-    </div>
-  </section>
+  <PageHero 
+    title="Psicólogas con corazón de <em>maestras</em>" 
+    subtitle="Creamos Espacio Ludimente porque creemos que la terapia debe ser un lugar seguro, divertido y transformador."
+    variant="centered"
+  />
 
   <section class="history-section container">
     <div class="content-narrow">
@@ -38,9 +22,9 @@ const team = [
   <section class="team-section">
     <div class="container">
       <h2 class="text-center">Nuestro Equipo</h2>
-      <div class="team-grid">
+      <div class="grid grid-auto-fit" style="margin-top: var(--spacing-lg);">
         {team.map(member => (
-          <article class="team-card">
+          <article class="team-card card-hover">
             <div class="image-wrapper">
               <div class="placeholder-avatar">{member.name[0]}</div>
               <!-- <img src={member.image} alt={member.name} /> -->
@@ -79,38 +63,13 @@ const team = [
 </MainLayout>
 
 <style>
-  .hero-about {
-    background-color: var(--color-secondary-container);
-    padding: var(--spacing-xl) 0;
-    text-align: center;
-  }
-
-  .lead {
-    font-size: 1.25rem;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
   .history-section {
     padding: var(--spacing-xl) 0;
-  }
-
-  .content-narrow {
-    max-width: 65ch;
-    margin: 0 auto;
-    text-align: center;
   }
 
   .team-section {
     background-color: var(--color-surface);
     padding: var(--spacing-xl) 0;
-  }
-
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
   }
 
   .team-card {

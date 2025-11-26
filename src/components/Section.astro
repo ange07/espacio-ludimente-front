@@ -1,0 +1,50 @@
+---
+/**
+ * Section.astro
+ * Wrapper genérico para secciones con variantes de fondo
+ */
+
+interface Props {
+  variant?: 'default' | 'surface' | 'accent';
+  class?: string;
+  id?: string;
+}
+
+const { variant = 'default', class: className = '', id } = Astro.props;
+
+const variants = {
+  default: 'bg-default',
+  surface: 'bg-surface',
+  accent: 'bg-accent'
+};
+---
+
+<section id={id} class:list={["section", variants[variant], className]}>
+  <div class="container">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .bg-default {
+    background-color: var(--color-background);
+  }
+
+  .bg-surface {
+    background-color: var(--color-surface);
+  }
+
+  .bg-accent {
+    background-color: var(--color-primary-container);
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: var(--spacing-lg) 0;
+    }
+  }
+</style>

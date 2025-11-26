@@ -1,5 +1,8 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import { bookingSteps, bookingTips } from '../data/booking-process';
+import { bookingFAQ } from '../data/faq';
+import { siteConfig } from '../data/site-config';
 ---
 
 <MainLayout title="Reservar Sesión - Espacio Ludimente" description="Agenda tu primera sesión de valoración. Psicología infantil y adolescente en Mérida.">
@@ -14,53 +17,36 @@ import MainLayout from '../layouts/MainLayout.astro';
           <div class="info-card">
             <h2>¿Cómo funciona?</h2>
             <ol class="steps-list">
-              <li>
-                <strong>Conocemos a tu hijo:</strong>
-                <p>Platicamos sobre lo que les preocupa y observamos la dinámica.</p>
-              </li>
-              <li>
-                <strong>Evaluación breve:</strong>
-                <p>Identificamos las áreas clave a trabajar.</p>
-              </li>
-              <li>
-                <strong>Plan de acción:</strong>
-                <p>Diseñamos juntos objetivos claros y medibles.</p>
-              </li>
+              {bookingSteps.map((step) => (
+                <li>
+                  <strong>{step.title}:</strong>
+                  <p>{step.description}</p>
+                </li>
+              ))}
             </ol>
-            <p class="note">
-              💡 <strong>Tip:</strong> No es necesario decirle a tu hijo que va al "psicólogo". Puedes decirle que irán a un lugar a jugar y aprender sobre las emociones.
-            </p>
+            {bookingTips.map((tip) => (
+              <p class="note">
+                {tip.icon} <strong>{tip.highlight}</strong> {tip.text.replace(tip.highlight + ':', '')}
+              </p>
+            ))}
           </div>
 
           <div class="faq-section">
             <h3>Preguntas Frecuentes</h3>
-            
-            <details class="faq-item">
-              <summary>¿Cuánto cuesta la primera sesión?</summary>
-              <p>$500 MXN. El pago se puede realizar en efectivo o transferencia al finalizar.</p>
-            </details>
 
-            <details class="faq-item">
-              <summary>¿Cuánto dura la sesión?</summary>
-              <p>50 minutos aproximadamente.</p>
-            </details>
-
-            <details class="faq-item">
-              <summary>¿Debo llevar algo?</summary>
-              <p>No es necesario traer nada específico, solo tu disposición para platicar. Si tienes informes escolares previos, pueden ser útiles.</p>
-            </details>
-
-            <details class="faq-item">
-              <summary>¿Qué pasa si no puedo asistir?</summary>
-              <p>Te pedimos cancelar o reprogramar con al menos 24 horas de anticipación para no generar cargos.</p>
-            </details>
+            {bookingFAQ.map((faq) => (
+              <details class="faq-item">
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
           </div>
         </div>
 
         <!-- Columna Derecha: Calendly -->
         <div class="calendly-wrapper">
           <!-- Calendly inline widget begin -->
-          <div class="calendly-inline-widget" data-url="https://calendly.com/espacioludimente/primera-sesion" style="min-width:320px;height:700px;"></div>
+          <div class="calendly-inline-widget" data-url={siteConfig.calendlyUrl} style="min-width:320px;height:700px;"></div>
           <script is:inline type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
           <!-- Calendly inline widget end -->
         </div>
@@ -156,7 +142,7 @@ import MainLayout from '../layouts/MainLayout.astro';
     min-height: 700px;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     .booking-grid {
       grid-template-columns: 1fr;
     }
