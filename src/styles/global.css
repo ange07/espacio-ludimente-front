@@ -26,6 +26,20 @@
   /* Outline y Bordes */
   --color-outline: rgba(177, 156, 217, 0.3); /* Lila al 30% */
 
+  /* Estados y Utilidades */
+  --color-error: #D32F2F;             /* Rojo error accesible */
+  --color-success: #25d366;           /* Verde éxito (WhatsApp) */
+  --color-white: #FFFFFF;             /* Blanco puro */
+  --color-gray-50: #FAFAFA;           /* Gris muy claro */
+  --color-gray-100: #F5F5F5;          /* Gris claro */
+  --color-gray-400: #9E9E9E;          /* Gris medio */
+  --color-gray-500: #757575;          /* Gris medio oscuro */
+  --color-gray-600: #666666;          /* Gris oscuro */
+  --color-gray-700: #616161;          /* Gris muy oscuro */
+
+  /* Hover States */
+  --color-secondary-hover: #C27D4F;   /* Terracota oscuro */
+
   /* Tipografía */
   --font-display: 'Lora', serif;      /* Títulos */
   --font-body: 'Montserrat', sans-serif; /* Cuerpo */
