@@ -1,0 +1,18 @@
+---
+/**
+ * SchemaOrg.astro
+ * Componente para insertar structured data (JSON-LD) en las páginas
+ * Mejora el SEO permitiendo que los motores de búsqueda entiendan mejor el contenido
+ */
+
+interface Props {
+  schema: any; // El objeto de schema ya preparado
+}
+
+const { schema } = Astro.props;
+---
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(schema)}
+/>

@@ -6,7 +6,11 @@ import PageHero from '../components/PageHero.astro';
 import { contactInfo } from '../data/contact-info';
 ---
 
-<MainLayout title="Contacto - Espacio Ludimente" description="Contáctanos para agendar una cita o resolver tus dudas. Psicología infantil en Francisco de Montejo, Mérida.">
+<MainLayout
+  title="Contacto - Espacio Ludimente"
+  description="Contáctanos para agendar una cita o resolver tus dudas. Psicología infantil en Francisco de Montejo, Mérida."
+  includeLocalBusiness={true}
+>
   <PageHero 
     title="Hablemos" 
     subtitle="Estamos aquí para escuchar tus dudas y encontrar el mejor camino para tu familia."

@@ -8,26 +8,54 @@
 // Importar componentes
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
 
 // Importar estilos globales
 import '../styles/global.css';
+
+// Importar schema helpers
+import { getOrganizationSchema, getLocalBusinessSchema, getWebSiteSchema, combineSchemas } from '../data/schema-helpers';
 
 // Props que cada página puede personalizar
 interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  includeLocalBusiness?: boolean; // Para homepage y contacto
 }
 
 // Valores por defecto
 const {
   title = "Espacio Ludimente - Psicología Infantil y Adolescente en Mérida",
   description = "Centro de psicología infantil con enfoque TCC en Mérida, Yucatán. Terapia basada en evidencia para niños y adolescentes. Primera sesión disponible.",
-  ogImage = "/og-image.jpg"
+  ogImage = "/og-image.jpg",
+  includeLocalBusiness = false
 } = Astro.props;
 
 // URL del sitio (para meta tags)
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Generar schema apropiado
+const isHomepage = Astro.url.pathname === '/';
+let schema;
+
+if (isHomepage) {
+  // Homepage: Organization + LocalBusiness + WebSite
+  schema = combineSchemas(
+    getOrganizationSchema(),
+    getLocalBusinessSchema(),
+    getWebSiteSchema()
+  );
+} else if (includeLocalBusiness) {
+  // Páginas como contacto: Organization + LocalBusiness
+  schema = combineSchemas(
+    getOrganizationSchema(),
+    getLocalBusinessSchema()
+  );
+} else {
+  // Otras páginas: Solo Organization
+  schema = getOrganizationSchema();
+}
 ---
 
 <!DOCTYPE html>
@@ -65,6 +93,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   <!-- Generator tag (opcional) -->
   <meta name="generator" content={Astro.generator}>
+
+  <!-- Schema.org structured data -->
+  <SchemaOrg schema={schema} />
 </head>
 
 <body>
