@@ -96,7 +96,7 @@ const { action = siteConfig.formspreeEndpoint } = Astro.props;
   }
 
   .required {
-    color: #D32F2F; /* Rojo error accesible */
+    color: var(--color-error);
   }
 
   .form-input {
@@ -106,18 +106,18 @@ const { action = siteConfig.formspreeEndpoint } = Astro.props;
     border-radius: var(--radius-sm);
     font-size: 1rem;
     transition: all var(--transition-fast);
-    background-color: #FAFAFA;
+    background-color: var(--color-gray-50);
   }
 
   .form-input:focus {
     outline: none;
     border-color: var(--color-primary);
-    background-color: #FFFFFF;
+    background-color: var(--color-white);
     box-shadow: 0 0 0 4px var(--color-primary-container);
   }
 
   .form-input::placeholder {
-    color: #9E9E9E;
+    color: var(--color-gray-400);
   }
 
   textarea.form-input {
